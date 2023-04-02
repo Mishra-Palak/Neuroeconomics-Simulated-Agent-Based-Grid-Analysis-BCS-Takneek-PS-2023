@@ -1,21 +1,22 @@
 import random
 import numpy as np
 import matplotlib.pyplot as plt
+
 N = 100 #NxN GRID
-NUM_DAYS = 50
+NUM_DAYS = 20
 NUM_ITERATIONS = 10 #In a day
 
 #INITIAL POPULATION
-M_HELPFUL = 100
-M_UNGRATEFUL = 100
-M_TIT_FOR_TAT = 100
+M_HELPFUL = 50
+M_UNGRATEFUL = 50
+M_TIT_FOR_TAT = 50
 
-CANTEENS = 10
+CANTEENS = 100
 
-FOOD_CANTEEN =  8
-FOOD_INITIAL = 2
+FOOD_CANTEEN = 3
+FOOD_INITIAL = 8
 
-REPRODUCTION_THRESHOLD = 2
+REPRODUCTION_THRESHOLD = 10
 
 TYPES = ["Helpful", "Ungrateful", "Tit-for-Tat"]
 
@@ -93,8 +94,12 @@ class Macpen():
             
             #NEW CANTEEN
             if grid[self.x][self.y] > 0:
-                grid[self.x][self.y] = 0
-                x, y = random.randint(0, N-1), random.randint(0, N-1)
+                x = self.x
+                y = self.y
+                while grid[x][y] > 0:
+                    if x == self.x and y == self.y:
+                        grid[self.x][self.y] = 0
+                    x, y = random.randint(0, N-1), random.randint(0, N-1)
                 grid[x][y] = FOOD_CANTEEN
 
             return new_macpens
@@ -110,7 +115,10 @@ class Macpen():
 grid = np.zeros((N, N), dtype=int) #Stores the number of macpen on each cell
 for i in range(CANTEENS):
     x, y = random.randint(0, N-1), random.randint(0, N-1)
-    grid[x][y] = FOOD_CANTEEN
+    if grid[x][y] > 0:
+        i-=1
+    else:
+        grid[x][y] = FOOD_CANTEEN
 #print(grid)
 
 #MACPEN
@@ -130,6 +138,7 @@ ungrateful_n=[M_UNGRATEFUL]
 tit_for_tat_n=[M_TIT_FOR_TAT]
 day_n=[0]
 
+#SIMULATION
 def simulate():
     global M_HELPFUL
     global M_UNGRATEFUL
@@ -212,10 +221,14 @@ def simulate():
                 elif macpan.type == TYPES[2]:
                     M_TIT_FOR_TAT-=1
         
+        #Setting new locations of the canteens for the next day
         grid = np.zeros((N, N), dtype=int)
         for i in range(CANTEENS):
             x, y = random.randint(0, N-1), random.randint(0, N-1)
-            grid[x][y] = FOOD_CANTEEN
+            if grid[x][y] > 0:
+                i-=1
+            else:
+                grid[x][y] = FOOD_CANTEEN
 
         ungrateful_n.append(M_UNGRATEFUL)
         grateful_n.append(M_HELPFUL)
