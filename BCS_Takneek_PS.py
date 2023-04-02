@@ -132,8 +132,10 @@ def simulate():
                 #Move
                 macpan.move()
 
-            #Ghost Gang
-            for macpan in population:
-                macpan.food -= GHOST_GANG
-                if (macpan.food <= 0):
-                    population.remove(macpan)
+        #Ghost Gang
+        for macpan in population:
+            macpan.food -= GHOST_GANG
+            if (macpan.food <= 0):
+                population.remove(macpan)
+
+        print("DAY ", day, ":\nPopulation: Helpful - ", M_HELPFUL, ", Ungrateful - ", M_UNGRATEFUL, ", Tit-for-Tat - ", M_TIT_FOR_TAT, "\n")
