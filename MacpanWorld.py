@@ -32,7 +32,7 @@ class Macpen():
 
     def move(self):
         min_dist = N
-        direction = -1 #L = 0, R = 1, U = 2, D = 3, Stay = 10
+        direction = -1 #Left = 0, Right = 1, Up = 2, Down = 3, Stay = 10
         for x in range(N):
             if (grid[x][self.y] > 0):
                 if (abs(self.x - x) < min_dist):
