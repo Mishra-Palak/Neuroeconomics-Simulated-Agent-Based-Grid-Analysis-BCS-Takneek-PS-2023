@@ -125,10 +125,10 @@ for i in range(M_TIT_FOR_TAT):
     x, y = random.randint(0, N-1), random.randint(0, N-1)
     population.append(Macpen(x, y, FOOD_INITIAL, TYPES[2], {0 : 0, 1 : 0}))
 
-ungrateful_n=[]
-grateful_n=[]
-tit_for_tat_n=[]
-day_n=[]
+grateful_n=[M_HELPFUL]
+ungrateful_n=[M_UNGRATEFUL]
+tit_for_tat_n=[M_TIT_FOR_TAT]
+day_n=[0]
 
 def simulate():
     global M_HELPFUL
@@ -216,23 +216,22 @@ def simulate():
         for i in range(CANTEENS):
             x, y = random.randint(0, N-1), random.randint(0, N-1)
             grid[x][y] = FOOD_CANTEEN
+
         ungrateful_n.append(M_UNGRATEFUL)
         grateful_n.append(M_HELPFUL)
         tit_for_tat_n.append(M_TIT_FOR_TAT)
         day_n.append(day+1)
+
         print("DAY", day+1, ":\nPopulation: Helpful - ", M_HELPFUL, ", Ungrateful - ", M_UNGRATEFUL, ", Tit-for-Tat - ", M_TIT_FOR_TAT)
 
 simulate()
+
+#PLOTTING
 plt.plot(day_n, ungrateful_n, label='Ungrateful')
-
-plt.plot(day_n, grateful_n, label='Helpful one')
-
+plt.plot(day_n, grateful_n, label='Helpful')
 plt.plot(day_n, tit_for_tat_n, label='Tit for Tat')
-
-plt.title('Population Vs Number of days')
-plt.xlabel('Number of days')
-plt.ylabel('Pacman Population')
-
+plt.title('Population Vs Day')
+plt.xlabel('Day')
+plt.ylabel('Macpan Population')
 plt.legend()
-
 plt.show()
