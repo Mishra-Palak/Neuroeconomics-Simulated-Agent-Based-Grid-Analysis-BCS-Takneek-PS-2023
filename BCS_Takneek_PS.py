@@ -158,6 +158,6 @@ def simulate():
                 elif macpan.type == TYPES[2]:
                     M_TIT_FOR_TAT-=1
 
-        print("DAY ", day, ":\nPopulation: Helpful - ", M_HELPFUL, ", Ungrateful - ", M_UNGRATEFUL, ", Tit-for-Tat - ", M_TIT_FOR_TAT)
+        print("DAY ", day+1, ":\nPopulation: Helpful - ", M_HELPFUL, ", Ungrateful - ", M_UNGRATEFUL, ", Tit-for-Tat - ", M_TIT_FOR_TAT)
 
-simulate()
+#simulate()
