@@ -10,12 +10,12 @@ M_HELPFUL = 100
 M_UNGRATEFUL = 100
 M_TIT_FOR_TAT = 100
 
-CANTEENS = 10
+CANTEENS = 20
 
-FOOD_CANTEEN = 2
+FOOD_CANTEEN = 8
 FOOD_INITIAL = 4
 
-REPRODUCTION_THRESHOLD = 8
+REPRODUCTION_THRESHOLD = 4
 
 TYPES = ["Helpful", "Ungrateful", "Tit-for-Tat"]
 
@@ -92,7 +92,7 @@ class Macpen():
                 M_TIT_FOR_TAT+=1
             
             #NEW CANTEEN
-            if (grid[self.x][self.y] > 0):
+            if grid[self.x][self.y] > 0:
                 grid[self.x][self.y] = 0
                 x, y = random.randint(0, N-1), random.randint(0, N-1)
                 grid[x][y] = FOOD_CANTEEN
@@ -105,10 +105,6 @@ class Macpen():
         #Goal is to prevent the needfull ones from dying
         self.food-=1
         other.food+=1
-
-
-
-
 
 #ENVIRONMENT-SETUP
 grid = np.zeros((N, N), dtype=int) #Stores the number of macpen on each cell
@@ -173,9 +169,9 @@ def simulate():
                 for y in range(N):
                     if len(macpan_count[x][y]['excess']) > 0 and len(macpan_count[x][y]['need']) > 0:
                         excess = macpan_count[x][y]['excess']
-                        excess.sort(reverse=True)
+                        excess.sort(key=lambda x: x.food, reverse=True)
                         need = macpan_count[x][y]['need']
-                        need.sort()
+                        need.sort(key=lambda x: x.food)
 
                         for i in range(min(len(excess), len(need))):
                             if excess[i].type == TYPES[0] and need[i].type == TYPES[0]:
@@ -189,16 +185,16 @@ def simulate():
                                 excess[i].history[1]+=1
                             elif excess[i].type == TYPES[2] and need[i].type == TYPES[1]:
                                 excess[i].history[0]+=1
-                                excess.remove(excess[i])
-                                i-=1
+                                # excess.remove(excess[i])
+                                # i-=1
                             elif excess[i].type == TYPES[2] and need[i].type == TYPES[2]:
                                 if need[i].history[1] >= need[i].history[0]: #By default, Tit-for-Tat's are helpful
                                     excess[i].share_food(need[i])
                                     excess[i].history[1]+=1
                                 else:
                                     excess[i].history[0]+=1
-                                    excess.remove(excess[i])
-                                    i-=1
+                                    # excess.remove(excess[i])
+                                    # i-=1
 
         #Ghost Gang - Comes at the end of the day
         for macpan in population:
