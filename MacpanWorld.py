@@ -11,16 +11,16 @@ M_HELPFUL = 50
 M_UNGRATEFUL = 50
 M_TIT_FOR_TAT = 50
 
-CANTEENS = 100
+CANTEENS = 100 #Number of canteens in the grid
 
-FOOD_CANTEEN = 3
-FOOD_INITIAL = 8
+FOOD_CANTEEN = 3 #Food provided by canteens to each macpan
+FOOD_INITIAL = 8 #Initial food level of the macpen
 
 REPRODUCTION_THRESHOLD = 10
 
 TYPES = ["Helpful", "Ungrateful", "Tit-for-Tat"]
 
-GHOST_GANG = 1
+GHOST_GANG = 1 #Food taken away by the ghost gang each day
 
 class Macpen():
     def __init__(self, x, y, food, type, history):
@@ -177,7 +177,7 @@ def simulate():
                 elif macpan.food > GHOST_GANG + 1:
                     if macpan.type != TYPES[1]:
                         macpan_count[macpan.x][macpan.y]['excess'].append(macpan)
-                #GHOST_GANG+1 are neither in excess nor need food
+                #GHOST_GANG+1 are neither in excess nor require food
             for x in range(N):
                 for y in range(N):
                     if len(macpan_count[x][y]['excess']) > 0 and len(macpan_count[x][y]['need']) > 0:
