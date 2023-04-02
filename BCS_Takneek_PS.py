@@ -22,11 +22,12 @@ TYPES = ["Helpful", "Ungrateful", "Tit-for-Tat"]
 GHOST_GANG = 2
 
 class Macpen():
-    def __init__(self, x, y, food, type):
+    def __init__(self, x, y, food, type, history):
         self.x = x
         self.y = y
         self.food = food
         self.type = type
+        self.history = history
 
     def move(self):
         min_dist = N
@@ -75,7 +76,11 @@ class Macpen():
     def reproduce(self):
         if self.food >= REPRODUCTION_THRESHOLD:
             self.food //= 2
-            new_macpens = [Macpen(self.x, self.y, self.food, self.type), Macpen(self.x, self.y, self.food, self.type)]
+            if self.type == TYPES[2]:
+                new_macpens = [Macpen(self.x, self.y, self.food, self.type, {0 : 0, 1 : 0}), Macpen(self.x, self.y, self.food, self.type, {0 : 0, 1 : 0})]
+            else:
+                new_macpens = [Macpen(self.x, self.y, self.food, self.type, self.history), Macpen(self.x, self.y, self.food, self.type, self.history)]
+
             if self.type == TYPES[0]:
                 global M_HELPFUL
                 M_HELPFUL+=1
@@ -96,6 +101,10 @@ class Macpen():
         return []
 
     #def share_food(self):
+        #Each macpan helps only once in a single iteration
+        #Goal is to prevent the needfull ones from dying
+
+
 
 
 #ENVIRONMENT-SETUP
@@ -109,13 +118,13 @@ for i in range(CANTEENS):
 population = []
 for i in range(M_HELPFUL):
     x, y = random.randint(0, N-1), random.randint(0, N-1)
-    population.append(Macpen(x, y, FOOD_INITIAL, TYPES[0]))
+    population.append(Macpen(x, y, FOOD_INITIAL, TYPES[0], {1 : 1}))
 for i in range(M_UNGRATEFUL):
     x, y = random.randint(0, N-1), random.randint(0, N-1)
-    population.append(Macpen(x, y, FOOD_INITIAL, TYPES[1]))
+    population.append(Macpen(x, y, FOOD_INITIAL, TYPES[1], {0 : 1}))
 for i in range(M_TIT_FOR_TAT):
     x, y = random.randint(0, N-1), random.randint(0, N-1)
-    population.append(Macpen(x, y, FOOD_INITIAL, TYPES[2]))
+    population.append(Macpen(x, y, FOOD_INITIAL, TYPES[2], {0 : 0, 1 : 0}))
 
 #SIMULATION
 def simulate():
@@ -143,12 +152,41 @@ def simulate():
                 else:
                     new_population.append(macpan)
             population = new_population
-
-            #Share Food
             
             #Move
             for macpan in population:
                 macpan.move()
+
+            #Share Food
+            macpan_count = [ [{'excess' : [], 'need' : []} for _ in range(N) ] for _ in range(N) ]
+            for macpan in population:
+                if macpan.food <= GHOST_GANG:
+                    macpan_count[macpan.x][macpan.y]['need'].append(macpan)
+                else if macpan.food > GHOST_GANG + 1:
+                    if macpan.type != TYPES[1]:
+                        macpan_count[macpan.x][macpan.y]['excess'].append(macpan)
+                #GHOST_GANG+1 are neither in excess nor need food
+
+            for x in range(N):
+                for y in range(N):
+                    if len(macpan_count[x][y]['excess']) > 0 and len(macpan_count[x][y]['need']) > 0:
+                        excess = macpan_count[x][y]['excess']
+                        excess.sort(reverse=True)
+                        need = macpan_count[x][y]['need']
+                        need.sort()
+
+                        for i in min(len(excess), len(need)):
+                            if excess[i].type == TYPES[0] and need[i].type == TYPES[0]:
+                            elif excess[i].type == TYPES[0] and need[i].type == TYPES[1]:
+                            elif excess[i].type == TYPES[0] and need[i].type == TYPES[2]:
+                            elif excess[i].type == TYPES[1] and need[i].type == TYPES[0]:
+                            elif excess[i].type == TYPES[1] and need[i].type == TYPES[1]:
+                            elif excess[i].type == TYPES[1] and need[i].type == TYPES[2]:
+                            elif excess[i].type == TYPES[2] and need[i].type == TYPES[0]:
+                            elif excess[i].type == TYPES[2] and need[i].type == TYPES[1]:
+                            elif excess[i].type == TYPES[2] and need[i].type == TYPES[2]:
+
+                         
 
         #Ghost Gang - Comes at the end of the day
         for macpan in population:
