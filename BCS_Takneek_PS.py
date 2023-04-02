@@ -13,7 +13,7 @@ M_TIT_FOR_TAT = 10
 K = 10 #CANTEENS
 
 FOOD_CANTEEN = 2
-FOOD = 2
+FOOD_INITIAL = 2
 
 REPRODUCTION_THRESHOLD = 4
 
@@ -108,13 +108,13 @@ for i in range(K):
 population = []
 for i in range(M_HELPFUL):
     x, y = random.randint(0, N-1), random.randint(0, N-1)
-    population.append(Macpen(x, y, FOOD, TYPES[0]))
+    population.append(Macpen(x, y, FOOD_INITIAL, TYPES[0]))
 for i in range(M_UNGRATEFUL):
     x, y = random.randint(0, N-1), random.randint(0, N-1)
-    population.append(Macpen(x, y, FOOD, TYPES[1]))
+    population.append(Macpen(x, y, FOOD_INITIAL, TYPES[1]))
 for i in range(M_TIT_FOR_TAT):
     x, y = random.randint(0, N-1), random.randint(0, N-1)
-    population.append(Macpen(x, y, FOOD, TYPES[2]))
+    population.append(Macpen(x, y, FOOD_INITIAL, TYPES[2]))
 
 def simulate():
     print("DAY 0:\nPopulation: Helpful - ", M_HELPFUL, ", Ungrateful - ", M_UNGRATEFUL, ", Tit-for-Tat - ", M_TIT_FOR_TAT)
@@ -148,6 +148,5 @@ def simulate():
                     M_UNGRATEFUL-=1
                 elif macpan.type == TYPES[2]:
                     M_TIT_FOR_TAT-=1
-
 
         print("DAY ", day, ":\nPopulation: Helpful - ", M_HELPFUL, ", Ungrateful - ", M_UNGRATEFUL, ", Tit-for-Tat - ", M_TIT_FOR_TAT)
