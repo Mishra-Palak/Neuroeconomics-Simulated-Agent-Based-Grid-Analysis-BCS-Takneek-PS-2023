@@ -14,6 +14,7 @@ M = M_HELPFUL + M_UNGRATEFUL + M_TIT_FOR_TAT
 K = 10 #CANTEENS
 
 FOOD_CANTEEN = 2
+FOOD = 2
 
 REPRODUCTION_THRESHOLD = 4
 
@@ -81,7 +82,7 @@ class Macpen():
             grid[x][y] = FOOD_CANTEEN
 
             return new_macpens
-        return []
+        return [self]
 
     #def share_food(self):
 
@@ -91,14 +92,36 @@ grid = np.zeros((N, N), dtype=int) #Stores the number of macpen on each cell
 for i in range(K):
     x, y = random.randint(0, N-1), random.randint(0, N-1)
     grid[x][y] = FOOD_CANTEEN
-
 #print(grid)
+
+#MACPEN
+population = []
+for i in range(M_HELPFUL):
+    x, y = random.randint(0, N-1), random.randint(0, N-1)
+    population.append(Macpen(x, y, FOOD, TYPES[0]))
+for i in range(M_UNGRATEFUL):
+    x, y = random.randint(0, N-1), random.randint(0, N-1)
+    population.append(Macpen(x, y, FOOD, TYPES[1]))
+for i in range(M_TIT_FOR_TAT):
+    x, y = random.randint(0, N-1), random.randint(0, N-1)
+    population.append(Macpen(x, y, FOOD, TYPES[2]))
 
 def simulate():
     for day in range(NUM_DAYS):
         #Each day things
         for i in range(NUM_ITERATIONS):
-            #Check if they can reproduce already
-            #Check if they are on a canteen
-            #Check if they can share food
-            #Move them
+            for macpan in population:
+                #Reproduce
+                population.append(reproduce(macpan))
+                population.remove(macpan)
+
+                #Canteen
+                if (grid[macpan.x][macpan.y] > 0):
+                    macpan.food += FOOD_CANTEEN
+
+            #Share Food
+
+
+            for macpan in population:
+                #Move
+                macpan.move()
