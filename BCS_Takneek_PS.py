@@ -22,11 +22,12 @@ TYPES = ["Helpful", "Ungrateful", "Tit-for-Tat"]
 GHOST_GANG = 1
 
 class Macpen():
-    def __init__(self, x, y, food, type):
+    def __init__(self, x, y, food, type, history):
         self.x = x
         self.y = y
         self.food = food
         self.type = type
+        self.history = history 
 
     def move(self):
         min_dist = N
@@ -94,7 +95,8 @@ class Macpen():
             return new_macpens
         return []
 
-    #def share_food(self):
+    def share_food(self):
+        
 
 
 #ENVIRONMENT-SETUP
@@ -108,13 +110,13 @@ for i in range(CANTEENS):
 population = []
 for i in range(M_HELPFUL):
     x, y = random.randint(0, N-1), random.randint(0, N-1)
-    population.append(Macpen(x, y, FOOD_INITIAL, TYPES[0]))
+    population.append(Macpen(x, y, FOOD_INITIAL, TYPES[0], {1 : 1}))
 for i in range(M_UNGRATEFUL):
     x, y = random.randint(0, N-1), random.randint(0, N-1)
-    population.append(Macpen(x, y, FOOD_INITIAL, TYPES[1]))
+    population.append(Macpen(x, y, FOOD_INITIAL, TYPES[1], {0 : 1}))
 for i in range(M_TIT_FOR_TAT):
     x, y = random.randint(0, N-1), random.randint(0, N-1)
-    population.append(Macpen(x, y, FOOD_INITIAL, TYPES[2]))
+    population.append(Macpen(x, y, FOOD_INITIAL, TYPES[2], {0 : 0, 1 : 0}))
 
 #SIMULATION
 def simulate():
@@ -141,12 +143,13 @@ def simulate():
                 else:
                     new_population.append(macpan)
             population = new_population
-
-            #Share Food
             
             #Move
             for macpan in population:
                 macpan.move()
+
+            #Share Food
+
 
         #Ghost Gang - Comes at the end of the day
         for macpan in population:
@@ -160,6 +163,6 @@ def simulate():
                 elif macpan.type == TYPES[2]:
                     M_TIT_FOR_TAT-=1
 
-        print("DAY ", day+1, ":\nPopulation: Helpful - ", M_HELPFUL, ", Ungrateful - ", M_UNGRATEFUL, ", Tit-for-Tat - ", M_TIT_FOR_TAT)
+        print("DAY", day+1, ":\nPopulation: Helpful - ", M_HELPFUL, ", Ungrateful - ", M_UNGRATEFUL, ", Tit-for-Tat - ", M_TIT_FOR_TAT)
 
 simulate()
