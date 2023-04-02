@@ -1,4 +1,4 @@
-import random
+ import random
 import numpy as np
 
 N = 10 #NxN GRID
@@ -77,6 +77,12 @@ class Macpen():
         if self.food >= REPRODUCTION_THRESHOLD:
             self.food //= 2
             new_macpens = [Macpen(self.x, self.y, self.food, self.type), Macpen(self.x, self.y, self.food, self.type)]
+            if self.type == TYPES[0]:
+                M_HELPFUL+=1
+            elif self.type == TYPES[1]:
+                M_UNGRATEFUL+=1
+            elif self.type == TYPES[2]:
+                M_TIT_FOR_TAT+=1
             
             #NEW CANTEEN
             grid[self.x][self.y] = 0
