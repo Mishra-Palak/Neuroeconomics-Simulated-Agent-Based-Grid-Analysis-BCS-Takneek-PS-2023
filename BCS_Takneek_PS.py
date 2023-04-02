@@ -1,7 +1,7 @@
 import random
 import numpy as np
 
-N = 10 #NxN GRID
+N = 100 #NxN GRID
 NUM_DAYS = 100
 NUM_ITERATIONS = 10 #In a day
 
@@ -94,9 +94,6 @@ class Macpen():
     #def share_food(self):
 
 
-
-
-
 #ENVIRONMENT-SETUP
 grid = np.zeros((N, N), dtype=int) #Stores the number of macpen on each cell
 for i in range(K):
@@ -121,20 +118,24 @@ def simulate():
     for day in range(NUM_DAYS):
         #Each day things
         for i in range(NUM_ITERATIONS):
+            #Reproduce
+            new_population = []
             for macpan in population:
-                #Reproduce
-                population.append(macpan.reproduce())
-                population.remove(macpan)
+                if macpan.food >= REPRODUCTION_THRESHOLD:
+                    new_population.append(macpan.reproduce())
+                else:
+                    new_population.append(macpan)
+            population = new_population
 
-                #Canteen
+            #Canteen
+            for macpan in population:
                 if (grid[macpan.x][macpan.y] > 0):
                     macpan.food += FOOD_CANTEEN
 
             #Share Food
             
-
+            #Move
             for macpan in population:
-                #Move
                 macpan.move()
 
         #Ghost Gang
@@ -148,5 +149,6 @@ def simulate():
                     M_UNGRATEFUL-=1
                 elif macpan.type == TYPES[2]:
                     M_TIT_FOR_TAT-=1
+
 
         print("DAY ", day, ":\nPopulation: Helpful - ", M_HELPFUL, ", Ungrateful - ", M_UNGRATEFUL, ", Tit-for-Tat - ", M_TIT_FOR_TAT)
