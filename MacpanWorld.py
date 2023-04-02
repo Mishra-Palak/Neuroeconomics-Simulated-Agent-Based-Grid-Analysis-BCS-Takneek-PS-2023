@@ -177,7 +177,7 @@ def simulate():
                 elif macpan.food > GHOST_GANG + 1:
                     if macpan.type != TYPES[1]:
                         macpan_count[macpan.x][macpan.y]['excess'].append(macpan)
-                #GHOST_GANG+1 are neither in excess nor need food
+                #GHOST_GANG+1 are neither in excess nor require food
             for x in range(N):
                 for y in range(N):
                     if len(macpan_count[x][y]['excess']) > 0 and len(macpan_count[x][y]['need']) > 0:
