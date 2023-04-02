@@ -92,7 +92,7 @@ class Macpen():
             grid[x][y] = FOOD_CANTEEN
 
             return new_macpens
-        return [self]
+        return []
 
     #def share_food(self):
 
@@ -117,41 +117,47 @@ for i in range(M_TIT_FOR_TAT):
     population.append(Macpen(x, y, FOOD_INITIAL, TYPES[2]))
 
 #SIMULATION
-print("DAY 0:\nPopulation: Helpful - ", M_HELPFUL, ", Ungrateful - ", M_UNGRATEFUL, ", Tit-for-Tat - ", M_TIT_FOR_TAT)
-for day in range(NUM_DAYS):
-    #Each day things
-    for i in range(NUM_ITERATIONS):
-        #Reproduce
-        new_population = []
+def simulate():
+    global M_HELPFUL
+    global M_UNGRATEFUL
+    global M_TIT_FOR_TAT
+    global population
+    print("DAY 0:\nPopulation: Helpful - ", M_HELPFUL, ", Ungrateful - ", M_UNGRATEFUL, ", Tit-for-Tat - ", M_TIT_FOR_TAT)
+    for day in range(NUM_DAYS):
+        #Each day things
+        for i in range(NUM_ITERATIONS):
+            #Canteen
+            for macpan in population:
+                if (grid[macpan.x][macpan.y] > 0):
+                    macpan.food += FOOD_CANTEEN
+
+            #Reproduce
+            new_population = []
+            for macpan in population:
+                if macpan.food >= REPRODUCTION_THRESHOLD:
+                    new_population.append(macpan.reproduce())
+                else:
+                    new_population.append(macpan)
+            population = new_population
+
+            #Share Food
+            
+            #Move
+            for macpan in population:
+                macpan.move()
+
+        #Ghost Gang - Comes at the end of the day
         for macpan in population:
-            if macpan.food >= REPRODUCTION_THRESHOLD:
-                new_population.append(macpan.reproduce())
-            else:
-                new_population.append(macpan)
-        population = new_population
+            macpan.food -= GHOST_GANG
+            if macpan.food <= 0:
+                population.remove(macpan)
+                if macpan.type == TYPES[0]:
+                    M_HELPFUL-=1
+                elif macpan.type == TYPES[1]:
+                    M_UNGRATEFUL-=1
+                elif macpan.type == TYPES[2]:
+                    M_TIT_FOR_TAT-=1
 
-        #Canteen
-        for macpan in population:
-            if (grid[macpan.x][macpan.y] > 0):
-                macpan.food += FOOD_CANTEEN
+        print("DAY ", day, ":\nPopulation: Helpful - ", M_HELPFUL, ", Ungrateful - ", M_UNGRATEFUL, ", Tit-for-Tat - ", M_TIT_FOR_TAT)
 
-        #Share Food
-        
-        #Move
-        for macpan in population:
-            macpan.move()
-
-    #Ghost Gang
-    for macpan in population:
-        macpan.food -= GHOST_GANG
-        if macpan.food <= 0:
-            population.remove(macpan)
-            if macpan.type == TYPES[0]:
-                M_HELPFUL-=1
-            elif macpan.type == TYPES[1]:
-                M_UNGRATEFUL-=1
-            elif macpan.type == TYPES[2]:
-                M_TIT_FOR_TAT-=1
-
-
-    print("DAY ", day, ":\nPopulation: Helpful - ", M_HELPFUL, ", Ungrateful - ", M_UNGRATEFUL, ", Tit-for-Tat - ", M_TIT_FOR_TAT)
+simulate()
