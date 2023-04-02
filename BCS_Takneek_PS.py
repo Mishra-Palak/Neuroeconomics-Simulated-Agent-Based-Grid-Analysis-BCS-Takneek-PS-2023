@@ -9,7 +9,6 @@ NUM_ITERATIONS = 10 #In a day
 M_HELPFUL = 10
 M_UNGRATEFUL = 10
 M_TIT_FOR_TAT = 10
-M = M_HELPFUL + M_UNGRATEFUL + M_TIT_FOR_TAT 
 
 K = 10 #CANTEENS
 
@@ -118,8 +117,8 @@ for i in range(M_TIT_FOR_TAT):
     population.append(Macpen(x, y, FOOD, TYPES[2]))
 
 def simulate():
+    print("DAY 0:\nPopulation: Helpful - ", M_HELPFUL, ", Ungrateful - ", M_UNGRATEFUL, ", Tit-for-Tat - ", M_TIT_FOR_TAT)
     for day in range(NUM_DAYS):
-        print("DAY 0:\nPopulation: Helpful - ", M_HELPFUL, ", Ungrateful - ", M_UNGRATEFUL, ", Tit-for-Tat - ", M_TIT_FOR_TAT)
         #Each day things
         for i in range(NUM_ITERATIONS):
             for macpan in population:
@@ -132,7 +131,7 @@ def simulate():
                     macpan.food += FOOD_CANTEEN
 
             #Share Food
-
+            
 
             for macpan in population:
                 #Move
@@ -141,7 +140,14 @@ def simulate():
         #Ghost Gang
         for macpan in population:
             macpan.food -= GHOST_GANG
-            if (macpan.food <= 0):
+            if macpan.food <= 0:
                 population.remove(macpan)
+                if macpan.type == TYPES[0]:
+                    M_HELPFUL-=1
+                elif macpan.type == TYPES[1]:
+                    M_UNGRATEFUL-=1
+                elif macpan.type == TYPES[2]:
+                    M_TIT_FOR_TAT-=1
+
 
         print("DAY ", day, ":\nPopulation: Helpful - ", M_HELPFUL, ", Ungrateful - ", M_UNGRATEFUL, ", Tit-for-Tat - ", M_TIT_FOR_TAT)
