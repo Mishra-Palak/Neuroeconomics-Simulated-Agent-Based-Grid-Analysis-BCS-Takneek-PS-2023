@@ -100,9 +100,12 @@ class Macpen():
             return new_macpens
         return []
 
-    #def share_food(self):
+    def share_food(self, other):
         #Each macpan helps only once in a single iteration
         #Goal is to prevent the needfull ones from dying
+        self.food-=1
+        other.food+=1
+
 
 
 
@@ -162,11 +165,10 @@ def simulate():
             for macpan in population:
                 if macpan.food <= GHOST_GANG:
                     macpan_count[macpan.x][macpan.y]['need'].append(macpan)
-                else if macpan.food > GHOST_GANG + 1:
+                elif macpan.food > GHOST_GANG + 1:
                     if macpan.type != TYPES[1]:
                         macpan_count[macpan.x][macpan.y]['excess'].append(macpan)
                 #GHOST_GANG+1 are neither in excess nor need food
-
             for x in range(N):
                 for y in range(N):
                     if len(macpan_count[x][y]['excess']) > 0 and len(macpan_count[x][y]['need']) > 0:
@@ -175,18 +177,28 @@ def simulate():
                         need = macpan_count[x][y]['need']
                         need.sort()
 
-                        for i in min(len(excess), len(need)):
+                        for i in range(min(len(excess), len(need))):
                             if excess[i].type == TYPES[0] and need[i].type == TYPES[0]:
+                                excess[i].share_food(need[i])
                             elif excess[i].type == TYPES[0] and need[i].type == TYPES[1]:
+                                excess[i].share_food(need[i])
                             elif excess[i].type == TYPES[0] and need[i].type == TYPES[2]:
-                            elif excess[i].type == TYPES[1] and need[i].type == TYPES[0]:
-                            elif excess[i].type == TYPES[1] and need[i].type == TYPES[1]:
-                            elif excess[i].type == TYPES[1] and need[i].type == TYPES[2]:
+                                excess[i].share_food(need[i])
                             elif excess[i].type == TYPES[2] and need[i].type == TYPES[0]:
+                                excess[i].share_food(need[i])
+                                excess[i].history[1]+=1
                             elif excess[i].type == TYPES[2] and need[i].type == TYPES[1]:
+                                excess[i].history[0]+=1
+                                excess.remove(excess[i])
+                                i-=1
                             elif excess[i].type == TYPES[2] and need[i].type == TYPES[2]:
-
-                         
+                                if need[i].history[1] >= need[i].history[0]: #By default, Tit-for-Tat's are helpful
+                                    excess[i].share_food(need[i])
+                                    excess[i].history[1]+=1
+                                else:
+                                    excess[i].history[0]+=1
+                                    excess.remove(excess[i])
+                                    i-=1
 
         #Ghost Gang - Comes at the end of the day
         for macpan in population:
