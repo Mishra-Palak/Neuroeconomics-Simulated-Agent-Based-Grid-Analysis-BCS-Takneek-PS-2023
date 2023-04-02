@@ -6,28 +6,27 @@ NUM_DAYS = 100
 NUM_ITERATIONS = 10 #In a day
 
 #INITIAL POPULATION
-M_HELPFUL = 50
-M_UNGRATEFUL = 50
-M_TIT_FOR_TAT = 50
+M_HELPFUL = 100
+M_UNGRATEFUL = 100
+M_TIT_FOR_TAT = 100
 
 CANTEENS = 10
 
 FOOD_CANTEEN = 2
-FOOD_INITIAL = 2
+FOOD_INITIAL = 8
 
-REPRODUCTION_THRESHOLD = 4
+REPRODUCTION_THRESHOLD = 10
 
 TYPES = ["Helpful", "Ungrateful", "Tit-for-Tat"]
 
-GHOST_GANG = 1
+GHOST_GANG = 2
 
 class Macpen():
-    def __init__(self, x, y, food, type, history):
+    def __init__(self, x, y, food, type):
         self.x = x
         self.y = y
         self.food = food
         self.type = type
-        self.history = history 
 
     def move(self):
         min_dist = N
@@ -88,15 +87,15 @@ class Macpen():
                 M_TIT_FOR_TAT+=1
             
             #NEW CANTEEN
-            grid[self.x][self.y] = 0
-            x, y = random.randint(0, N-1), random.randint(0, N-1)
-            grid[x][y] = FOOD_CANTEEN
+            if (grid[self.x][self.y] > 0):
+                grid[self.x][self.y] = 0
+                x, y = random.randint(0, N-1), random.randint(0, N-1)
+                grid[x][y] = FOOD_CANTEEN
 
             return new_macpens
         return []
 
-    def share_food(self):
-        
+    #def share_food(self):
 
 
 #ENVIRONMENT-SETUP
@@ -110,13 +109,13 @@ for i in range(CANTEENS):
 population = []
 for i in range(M_HELPFUL):
     x, y = random.randint(0, N-1), random.randint(0, N-1)
-    population.append(Macpen(x, y, FOOD_INITIAL, TYPES[0], {1 : 1}))
+    population.append(Macpen(x, y, FOOD_INITIAL, TYPES[0]))
 for i in range(M_UNGRATEFUL):
     x, y = random.randint(0, N-1), random.randint(0, N-1)
-    population.append(Macpen(x, y, FOOD_INITIAL, TYPES[1], {0 : 1}))
+    population.append(Macpen(x, y, FOOD_INITIAL, TYPES[1]))
 for i in range(M_TIT_FOR_TAT):
     x, y = random.randint(0, N-1), random.randint(0, N-1)
-    population.append(Macpen(x, y, FOOD_INITIAL, TYPES[2], {0 : 0, 1 : 0}))
+    population.append(Macpen(x, y, FOOD_INITIAL, TYPES[2]))
 
 #SIMULATION
 def simulate():
@@ -124,6 +123,7 @@ def simulate():
     global M_UNGRATEFUL
     global M_TIT_FOR_TAT
     global population
+    global grid
     print("DAY 0:\nPopulation: Helpful - ", M_HELPFUL, ", Ungrateful - ", M_UNGRATEFUL, ", Tit-for-Tat - ", M_TIT_FOR_TAT)
     for day in range(NUM_DAYS):
         #Each day things
@@ -143,13 +143,12 @@ def simulate():
                 else:
                     new_population.append(macpan)
             population = new_population
+
+            #Share Food
             
             #Move
             for macpan in population:
                 macpan.move()
-
-            #Share Food
-
 
         #Ghost Gang - Comes at the end of the day
         for macpan in population:
@@ -162,6 +161,11 @@ def simulate():
                     M_UNGRATEFUL-=1
                 elif macpan.type == TYPES[2]:
                     M_TIT_FOR_TAT-=1
+        
+        grid = np.zeros((N, N), dtype=int)
+        for i in range(CANTEENS):
+            x, y = random.randint(0, N-1), random.randint(0, N-1)
+            grid[x][y] = FOOD_CANTEEN
 
         print("DAY", day+1, ":\nPopulation: Helpful - ", M_HELPFUL, ", Ungrateful - ", M_UNGRATEFUL, ", Tit-for-Tat - ", M_TIT_FOR_TAT)
 
