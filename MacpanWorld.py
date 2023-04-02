@@ -11,16 +11,16 @@ M_HELPFUL = 50
 M_UNGRATEFUL = 50
 M_TIT_FOR_TAT = 50
 
-CANTEENS = 100
+CANTEENS = 100 #Number of canteens
 
-FOOD_CANTEEN = 3
-FOOD_INITIAL = 8
+FOOD_CANTEEN = 3 #Food provided by the canteens to each macpan
+FOOD_INITIAL = 8 #Initial food level of each macpan
 
 REPRODUCTION_THRESHOLD = 10
 
 TYPES = ["Helpful", "Ungrateful", "Tit-for-Tat"]
 
-GHOST_GANG = 1
+GHOST_GANG = 1 #Food taken away by ghost gang
 
 class Macpen():
     def __init__(self, x, y, food, type, history):
