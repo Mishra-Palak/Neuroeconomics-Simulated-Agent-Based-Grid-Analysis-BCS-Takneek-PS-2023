@@ -6,11 +6,11 @@ NUM_DAYS = 100
 NUM_ITERATIONS = 10 #In a day
 
 #INITIAL POPULATION
-M_HELPFUL = 10
-M_UNGRATEFUL = 10
-M_TIT_FOR_TAT = 10
+M_HELPFUL = 50
+M_UNGRATEFUL = 50
+M_TIT_FOR_TAT = 50
 
-K = 10 #CANTEENS
+CANTEENS = 10
 
 FOOD_CANTEEN = 2
 FOOD_INITIAL = 2
@@ -99,7 +99,7 @@ class Macpen():
 
 #ENVIRONMENT-SETUP
 grid = np.zeros((N, N), dtype=int) #Stores the number of macpen on each cell
-for i in range(K):
+for i in range(CANTEENS):
     x, y = random.randint(0, N-1), random.randint(0, N-1)
     grid[x][y] = FOOD_CANTEEN
 #print(grid)
