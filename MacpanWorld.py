@@ -13,13 +13,13 @@ M_TIT_FOR_TAT = 100
 CANTEENS = 10
 
 FOOD_CANTEEN = 2
-FOOD_INITIAL = 8
+FOOD_INITIAL = 4
 
-REPRODUCTION_THRESHOLD = 10
+REPRODUCTION_THRESHOLD = 8
 
 TYPES = ["Helpful", "Ungrateful", "Tit-for-Tat"]
 
-GHOST_GANG = 2
+GHOST_GANG = 1
 
 class Macpen():
     def __init__(self, x, y, food, type, history):
