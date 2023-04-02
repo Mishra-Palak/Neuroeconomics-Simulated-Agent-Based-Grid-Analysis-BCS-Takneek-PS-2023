@@ -11,16 +11,16 @@ M_HELPFUL = 50
 M_UNGRATEFUL = 50
 M_TIT_FOR_TAT = 50
 
-CANTEENS = 100 #Number of canteens
+CANTEENS = 100
 
-FOOD_CANTEEN = 3 #Food provided by the canteens to each macpan
-FOOD_INITIAL = 8 #Initial food level of each macpan
+FOOD_CANTEEN = 3
+FOOD_INITIAL = 8
 
 REPRODUCTION_THRESHOLD = 10
 
 TYPES = ["Helpful", "Ungrateful", "Tit-for-Tat"]
 
-GHOST_GANG = 1 #Food taken away by ghost gang
+GHOST_GANG = 1
 
 class Macpen():
     def __init__(self, x, y, food, type, history):
@@ -32,7 +32,7 @@ class Macpen():
 
     def move(self):
         min_dist = N
-        direction = -1 #Left = 0, Right = 1, Up = 2, Down = 3, Stay = 10
+        direction = -1 #L = 0, R = 1, U = 2, D = 3, Stay = 10
         for x in range(N):
             if (grid[x][self.y] > 0):
                 if (abs(self.x - x) < min_dist):
@@ -133,10 +133,10 @@ for i in range(M_TIT_FOR_TAT):
     x, y = random.randint(0, N-1), random.randint(0, N-1)
     population.append(Macpen(x, y, FOOD_INITIAL, TYPES[2], {0 : 0, 1 : 0}))
 
-grateful_n=[M_HELPFUL]
-ungrateful_n=[M_UNGRATEFUL]
-tit_for_tat_n=[M_TIT_FOR_TAT]
-day_n=[0]
+helpful_n = [M_HELPFUL]
+ungrateful_n = [M_UNGRATEFUL]
+tit_for_tat_n = [M_TIT_FOR_TAT]
+day_n = [0]
 
 #SIMULATION
 def simulate():
@@ -177,7 +177,7 @@ def simulate():
                 elif macpan.food > GHOST_GANG + 1:
                     if macpan.type != TYPES[1]:
                         macpan_count[macpan.x][macpan.y]['excess'].append(macpan)
-                #GHOST_GANG+1 are neither in excess nor require food
+                #GHOST_GANG+1 are neither in excess nor need food
             for x in range(N):
                 for y in range(N):
                     if len(macpan_count[x][y]['excess']) > 0 and len(macpan_count[x][y]['need']) > 0:
@@ -230,8 +230,8 @@ def simulate():
             else:
                 grid[x][y] = FOOD_CANTEEN
 
+        helpful_n.append(M_HELPFUL)
         ungrateful_n.append(M_UNGRATEFUL)
-        grateful_n.append(M_HELPFUL)
         tit_for_tat_n.append(M_TIT_FOR_TAT)
         day_n.append(day+1)
 
@@ -240,9 +240,9 @@ def simulate():
 simulate()
 
 #PLOTTING
+plt.plot(day_n, helpful_n, label='Helpful')
 plt.plot(day_n, ungrateful_n, label='Ungrateful')
-plt.plot(day_n, grateful_n, label='Helpful')
-plt.plot(day_n, tit_for_tat_n, label='Tit for Tat')
+plt.plot(day_n, tit_for_tat_n, label='Tit-for-Tat')
 plt.title('Population Vs Day')
 plt.xlabel('Day')
 plt.ylabel('Macpan Population')
