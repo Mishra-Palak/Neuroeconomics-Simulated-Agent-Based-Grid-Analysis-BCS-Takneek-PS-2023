@@ -1,4 +1,4 @@
- import random
+import random
 import numpy as np
 
 N = 10 #NxN GRID
