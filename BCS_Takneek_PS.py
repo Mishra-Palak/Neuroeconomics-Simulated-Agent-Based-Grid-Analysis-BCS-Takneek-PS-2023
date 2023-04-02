@@ -119,7 +119,7 @@ for i in range(M_TIT_FOR_TAT):
 
 def simulate():
     for day in range(NUM_DAYS):
-        print("DAY 0:\nPopulation: Helpful - ", M_HELPFUL, ", Ungrateful - ", M_UNGRATEFUL, ", Tit-for-Tat - ", M_TIT_FOR_TAT, "\n")
+        print("DAY 0:\nPopulation: Helpful - ", M_HELPFUL, ", Ungrateful - ", M_UNGRATEFUL, ", Tit-for-Tat - ", M_TIT_FOR_TAT)
         #Each day things
         for i in range(NUM_ITERATIONS):
             for macpan in population:
@@ -144,4 +144,4 @@ def simulate():
             if (macpan.food <= 0):
                 population.remove(macpan)
 
-        print("DAY ", day, ":\nPopulation: Helpful - ", M_HELPFUL, ", Ungrateful - ", M_UNGRATEFUL, ", Tit-for-Tat - ", M_TIT_FOR_TAT, "\n")
+        print("DAY ", day, ":\nPopulation: Helpful - ", M_HELPFUL, ", Ungrateful - ", M_UNGRATEFUL, ", Tit-for-Tat - ", M_TIT_FOR_TAT)
