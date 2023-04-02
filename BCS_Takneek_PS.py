@@ -135,7 +135,9 @@ def simulate():
             new_population = []
             for macpan in population:
                 if macpan.food >= REPRODUCTION_THRESHOLD:
-                    new_population.append(macpan.reproduce())
+                    new_macpens = macpan.reproduce()
+                    new_population.append(new_macpens[0])
+                    new_population.append(new_macpens[1])
                 else:
                     new_population.append(macpan)
             population = new_population
@@ -160,4 +162,4 @@ def simulate():
 
         print("DAY ", day+1, ":\nPopulation: Helpful - ", M_HELPFUL, ", Ungrateful - ", M_UNGRATEFUL, ", Tit-for-Tat - ", M_TIT_FOR_TAT)
 
-#simulate()
+simulate()
