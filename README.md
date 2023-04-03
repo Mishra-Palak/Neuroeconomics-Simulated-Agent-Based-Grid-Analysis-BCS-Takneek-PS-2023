@@ -77,6 +77,36 @@ No matter how we change the parameters, the grateful one and the tit for tat one
 
 On decreasing the number of iteration the population starts dying as the arrival of ghost gang overpowers the population growth
 
+![image](https://user-images.githubusercontent.com/123170794/229419346-b68d7bd4-5445-4c87-a3df-ab1adf183e36.png)![image](https://user-images.githubusercontent.com/123170794/229419649-e82b8085-1340-46a4-a770-249e95976932.png)
+
+![image](https://user-images.githubusercontent.com/123170794/229419755-dc77bf18-8442-4804-8763-2807670e0445.png)![image](https://user-images.githubusercontent.com/123170794/229419763-53e98975-c0bd-4aaa-9a92-ff2f320afe93.png)
+
+### On the basis of number of canteens in the area
+On decreasing the number of canteens the ungrateful one starts winning 
+
+![image](https://user-images.githubusercontent.com/123170794/229419829-a12433ca-6dec-4efd-ab18-9eb41ded2379.png)![image](https://user-images.githubusercontent.com/123170794/229419849-2a9b6819-462b-422a-beac-415cda30a427.png)
+
+![image](https://user-images.githubusercontent.com/123170794/229419944-7a1130dd-0328-4561-8e12-ee2c75c00646.png)![image](https://user-images.githubusercontent.com/123170794/229419958-e710f49a-817a-4453-99b0-7365758fb206.png)
+
+![image](https://user-images.githubusercontent.com/123170794/229419976-0c79eb97-58f9-4d34-b8be-083d9d44d71f.png)![image](https://user-images.githubusercontent.com/123170794/229419995-b42c750e-7c60-4ae4-900d-3f94314feaa4.png)
+
+### On decreasing the initial food of the macpen 
+![image](https://user-images.githubusercontent.com/123170794/229420033-3bbd737d-5530-4784-b6c2-b6c31289ceeb.png)![image](https://user-images.githubusercontent.com/123170794/229420049-06769c39-0042-4297-bc82-a84c9023f079.png)
+
+![image](https://user-images.githubusercontent.com/123170794/229420076-b627295f-e233-4bcd-90df-f51980ea548d.png)![image](https://user-images.githubusercontent.com/123170794/229420085-ebc7d2ce-7bcc-407d-a1fc-65e0604ccac8.png)
+
+![image](https://user-images.githubusercontent.com/123170794/229420103-ff744cac-ebbb-40b1-8e7e-a6813b016a3f.png)![image](https://user-images.githubusercontent.com/123170794/229420119-970984be-53a8-4772-8fcf-3b39016bd7a8.png)
+
+![image](https://user-images.githubusercontent.com/123170794/229420141-7da4aed6-205d-4d34-9a8e-aed82bd8c573.png)
+
+### On decreasing the threshold of reproduction
+There is a lot of variation
+
+![image](https://user-images.githubusercontent.com/123170794/229420180-16a945db-9b04-4ef6-b2f8-7bbebc358622.png)![image](https://user-images.githubusercontent.com/123170794/229420204-20c26f90-c981-4662-b96f-421ceed3585d.png)
+
+
+
+
 
 
 
