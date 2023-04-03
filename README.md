@@ -109,10 +109,6 @@ There is a lot of variation
 
 ![image](https://user-images.githubusercontent.com/123170794/229420180-16a945db-9b04-4ef6-b2f8-7bbebc358622.png)![image](https://user-images.githubusercontent.com/123170794/229420204-20c26f90-c981-4662-b96f-421ceed3585d.png)
 
+## CONCLUSION
 
-
-
-
-
-
-
+In conclusion, this project aims to simulate a grid world with Macpen, canteens, and the Ghost gang to analyze the effect of small individual decisions on the population. By implementing the environment in Python, defining the strategies of Macpen, and analyzing the population development over time, we can gain insights into how different types of behavior can affect the survival and growth of a population. The project requires a combination of programming skills, analytical skills, and creativity to come up with effective strategies and visualize the data.
