@@ -63,7 +63,8 @@ On decreasing the number of canteens the ungrateful one starts winning
 
 4. On decreasing the threshold of reproduction
 
-![image](https://user-images.githubusercontent.com/123170794/229428468-78a840ec-fb61-454b-9879-c36e7f73a55e.png)![image](https://user-images.githubusercontent.com/123170794/229428481-1958d714-f3c7-4f29-b421-eb0fda9d696f.png)
+![image](https://user-images.githubusercontent.com/123170794/229428468-78a840ec-fb61-454b-9879-c36e7f73a55e.png)![image](https://user-images.githubusercontent.com/123170794/229428622-8464c069-cd7e-468c-97a6-4a3991d2c817.png)
+
 
 
 There are a lot of variation post the above change.
