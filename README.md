@@ -5,7 +5,7 @@ This is a repo containing the code and the documentation for the BCS PS, Takneek
 
 ### _~Submission by Shauryas_
 
-## Introduction 
+## INTRODUCTION
 
 This project aims to analyze the effect of small individual decisions on the population of a grid world inhabited by Pacman-like creatures called Macpen. We will study the population growth and development based on the behavior of three types of Macpen: Helpful, Ungrateful, and Tit-for-Tat. The Macpen must collect food from random canteens in the grid world to reproduce. However, their food supply will be reduced by the Ghost Gang, which takes away a certain amount of food from each Macpen every day. If any Macpen's food level falls below zero, it will die. We will use Python to implement the environment and strategies of the Macpen and visualize their population development graphically.
 
