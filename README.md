@@ -5,9 +5,10 @@ This is a repo containing the code and the documentation for the BCS PS, Takneek
 
 ### _~Submission by Shauryas_
 
-## INTRODUCTION
+## Introduction 
 
-We will start by creating a grid world of size NxN and placing random canteens in it. We will then initialize the population of each type of Macpen and assign them a starting position on the grid. We will then create functions for the movement of Macpen and food collection. The Macpen will move towards the nearest canteen and collect food. After collecting enough food, they will reproduce which results in two new Macpen with an equal share of food from the parent Macpen. We will also create functions for the Ghost Gang's daily visit and its reduction of the Macpen's food supply. We will then implement the behavior of the three types of Macpen: Helpful, Ungrateful, and Tit-for-Tat. We will run the simulation for a fixed number of days and record the population of each type of Macpan on each day. Finally, we plotted the population graphs of each type of Macpan for all the days.
+This project aims to analyze the effect of small individual decisions on the population of a grid world inhabited by Pacman-like creatures called Macpen. We will study the population growth and development based on the behavior of three types of Macpen: Helpful, Ungrateful, and Tit-for-Tat. The Macpen must collect food from random canteens in the grid world to reproduce. However, their food supply will be reduced by the Ghost Gang, which takes away a certain amount of food from each Macpen every day. If any Macpen's food level falls below zero, it will die. We will use Python to implement the environment and strategies of the Macpen and visualize their population development graphically.
+
 
 ## APPROACH
 
