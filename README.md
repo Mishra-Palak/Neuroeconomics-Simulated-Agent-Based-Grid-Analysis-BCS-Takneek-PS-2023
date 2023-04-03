@@ -39,11 +39,13 @@ On decreasing the number of iteration the population starts dying as the arrival
 
 2. On the basis of number of canteens in the area:
 
-![image](https://user-images.githubusercontent.com/123170794/229426477-b9cbb96c-9009-466a-b3fd-b2554c032c83.png)![image](https://user-images.githubusercontent.com/123170794/229426493-123d6d30-665b-4dfa-a491-0f6e7c964c24.png)
+![image](https://user-images.githubusercontent.com/123170794/229429408-892c952a-b6d3-4ceb-ab4b-0090296835e9.png)![image](https://user-images.githubusercontent.com/123170794/229429425-142f7a12-8c62-4605-97ed-d90ab8b26717.png)
 
-![image](https://user-images.githubusercontent.com/123170794/229426501-a2e16b78-aeb5-4820-98cc-ec4afeb43955.png)![image](https://user-images.githubusercontent.com/123170794/229426526-18cac48d-6709-465d-b1b8-87450cfafca9.png)
+![image](https://user-images.githubusercontent.com/123170794/229429453-c9709f94-9ebc-40f2-b867-7c5fc0beaba4.png)![image](https://user-images.githubusercontent.com/123170794/229429649-851d75cc-379c-47a6-9114-d53cccc92f6f.png)
 
-![image](https://user-images.githubusercontent.com/123170794/229426653-e14dd75f-c816-43c2-985f-372bf4d6047b.png)![image](https://user-images.githubusercontent.com/123170794/229426670-460d59d7-45d5-4f97-b7ce-a587644c179f.png)
+![image](https://user-images.githubusercontent.com/123170794/229429706-4f9cb6fb-7be2-4cc5-948d-0ba1bb144baa.png)![image](https://user-images.githubusercontent.com/123170794/229429735-50a6b2ec-7bf6-47da-9f41-1408591466ac.png)
+
+
 
 On decreasing the number of canteens the ungrateful one starts winning
 
@@ -51,13 +53,13 @@ On decreasing the number of canteens the ungrateful one starts winning
 
 3. On decreasing the initial food of the macpen 
 
-![image](https://user-images.githubusercontent.com/123170794/229426777-1a5e3d70-9f43-4a51-9319-98036408d8ba.png)![image](https://user-images.githubusercontent.com/123170794/229426805-ab412f22-9ffd-4b6f-a018-752672bc2f69.png)
+![image](https://user-images.githubusercontent.com/123170794/229429166-a8a83692-5f09-4f07-80ad-04e186a75a16.png)![image](https://user-images.githubusercontent.com/123170794/229429198-0d01cf16-6c4b-4c36-b8c6-57958cfab927.png)
 
-![image](https://user-images.githubusercontent.com/123170794/229426862-bdc0e505-e725-4a46-b3a9-c6813b8e8a59.png)![image](https://user-images.githubusercontent.com/123170794/229426874-3f2c06fb-f88b-4f9e-9e3f-675f7827e68e.png)
+![image](https://user-images.githubusercontent.com/123170794/229429210-e923ad87-eee4-4ace-8c46-ef0409a276fe.png)![image](https://user-images.githubusercontent.com/123170794/229429228-731b50d3-01cd-46c1-b8c2-9ea89d15ad4a.png)
 
-![image](https://user-images.githubusercontent.com/123170794/229426938-b05e5ed2-a433-4b0c-b08f-654db7c37ad4.png)![image](https://user-images.githubusercontent.com/123170794/229426947-b2d0a82b-ebb7-4529-90fe-b552229ce4fa.png)
+![image](https://user-images.githubusercontent.com/123170794/229429254-fa8f0a2a-4a51-4250-ac0a-376f7e0ea03b.png)![image](https://user-images.githubusercontent.com/123170794/229429274-acfe776f-e06b-4c14-84ae-ae1ddeef6a63.png)
 
-![image](https://user-images.githubusercontent.com/123170794/229426969-3a8173b0-2202-40f7-a352-29b58a00cd12.png)
+![image](https://user-images.githubusercontent.com/123170794/229429296-83ab5938-83ff-4ba8-97e6-5364d7f9faf7.png)
 
 #
 
