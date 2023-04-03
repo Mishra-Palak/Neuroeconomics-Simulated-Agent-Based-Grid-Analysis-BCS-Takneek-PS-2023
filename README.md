@@ -67,3 +67,17 @@ Next we initialize the location of all the helpful macpan, again randomly. The s
 
 ### Simulation
 Within the simulation, we firstly check if the canteen exists at the position of the macpan. If it exists, then the macpan’s food is appended by 1. Next, if the reproduction criteria is met, the macpan reproduces and forms 2 macpen with equal amount of food (refer to the reproduction unit for further explanation). After this the macpan moves using the moving strategy described above. If there are more than 2 macpen in the same grid cell, and they meet the sharing criteria, sharing of food occurs( refer to the sharing food unit for further details). At the end of the day, the ghost gang arrives and takes away one food particle from each macpan. If the macpan’s food no. becomes 0, then it dies. This is what happens in each iteration. Every iteration, the food in the canteens is replenished. And each day, the canteen locations are changed, and randomised. 
+
+## INFERENCE  AND GRAPHICAL RESULTS
+
+No matter how we change the parameters, the grateful one and the tit for tat one behave in a similar manner.
+
+
+### Change in the number of iterations.
+
+On decreasing the number of iteration the population starts dying as the arrival of ghost gang overpowers the population growth
+
+
+
+
+
