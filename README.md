@@ -36,7 +36,7 @@ The following changes were made in order to analyse the results:
 On decreasing the number of iteration the population starts dying as the arrival of ghost gang overpowers the population growth
 
 # 
-#
+
 2. On the basis of number of canteens in the area:
 
 ![image](https://user-images.githubusercontent.com/123170794/229426477-b9cbb96c-9009-466a-b3fd-b2554c032c83.png)![image](https://user-images.githubusercontent.com/123170794/229426493-123d6d30-665b-4dfa-a491-0f6e7c964c24.png)
@@ -48,7 +48,7 @@ On decreasing the number of iteration the population starts dying as the arrival
 On decreasing the number of canteens the ungrateful one starts winning
 
 #
-#
+
 3. On decreasing the initial food of the macpen 
 
 ![image](https://user-images.githubusercontent.com/123170794/229426777-1a5e3d70-9f43-4a51-9319-98036408d8ba.png)![image](https://user-images.githubusercontent.com/123170794/229426805-ab412f22-9ffd-4b6f-a018-752672bc2f69.png)
@@ -60,7 +60,7 @@ On decreasing the number of canteens the ungrateful one starts winning
 ![image](https://user-images.githubusercontent.com/123170794/229426969-3a8173b0-2202-40f7-a352-29b58a00cd12.png)
 
 #
-#
+
 4. On decreasing the threshold of reproduction
 
 ![image](https://user-images.githubusercontent.com/123170794/229427040-dabbd8f5-1e77-45f1-bc2b-bed476cd62cb.png)![image](https://user-images.githubusercontent.com/123170794/229427053-3089e21b-56af-45b8-ba2b-f0d599cddd88.png)
@@ -70,6 +70,6 @@ There are a lot of variation post the above change.
 
 
 
-## Conclusion
+## CONCLUSION
 In conclusion, this project aims to simulate a grid world with Macpen, canteens, and the Ghost gang to analyze the effect of small individual decisions on the population. By implementing the environment in Python, defining the strategies of Macpen, and analyzing the population development over time, we can gain insights into how different types of behavior can affect the survival and growth of a population. The project requires a combination of programming skills, analytical skills, and creativity to come up with effective strategies and visualize the data.
 
