@@ -1,6 +1,6 @@
-# BCS-Takneek-PS-2023
+<!-- # BCS-Takneek-PS-2023
 This is a repo containing the code and the documentation for the BCS PS, Takneek 2023.
-
+ -->
 # NEUROECONOMICS:
 
 ### _~Submission by Shauryas_
