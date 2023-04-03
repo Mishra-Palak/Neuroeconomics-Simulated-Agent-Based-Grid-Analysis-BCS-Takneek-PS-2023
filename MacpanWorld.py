@@ -239,7 +239,7 @@ def simulate():
 
 simulate()
 
-#PLOTTING
+#PLOTTING THE RESULT
 plt.plot(day_n, helpful_n, label='Helpful')
 plt.plot(day_n, ungrateful_n, label='Ungrateful')
 plt.plot(day_n, tit_for_tat_n, label='Tit-for-Tat')
